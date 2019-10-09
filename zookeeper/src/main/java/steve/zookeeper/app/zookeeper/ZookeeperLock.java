@@ -21,7 +21,6 @@ import static org.apache.zookeeper.Watcher.Event.EventType.NodeDeleted;
  * @author steve
  */
 public class ZookeeperLock {
-    private final Logger logger = LoggerFactory.getLogger(ZookeeperLock.class);
     private ZooKeeper zooKeeper = null;
     private String thisLock = null;
     private String lockPath = null;
@@ -52,6 +51,7 @@ public class ZookeeperLock {
                 }
             });
         }
+        Logger logger = LoggerFactory.getLogger(ZookeeperLock.class);
         logger.warn("create a lock:" + thisLock);
     }
 
