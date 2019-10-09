@@ -1,1 +1,6 @@
-
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/spring
+server:
+  port: 8444
