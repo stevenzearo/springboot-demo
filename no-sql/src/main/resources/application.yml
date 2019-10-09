@@ -2,5 +2,8 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/spring
+    elasticsearch:
+      cluster-name: es
+      cluster-nodes: localhost:9200
 server:
   port: 8444
