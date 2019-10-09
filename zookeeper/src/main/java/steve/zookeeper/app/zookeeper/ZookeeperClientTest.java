@@ -46,20 +46,26 @@ public class ZookeeperClientTest {
 //        zooKeeper.create("/test", "123".getBytes(), )
         List<ACL> aclList = new ArrayList<>();
         aclList.add(new ACL(ZooDefs.Perms.READ, ZooDefs.Ids.ANYONE_ID_UNSAFE));
-        zooKeeper.create("/test", "data".getBytes(), aclList, CreateMode.PERSISTENT);
+        String s = zooKeeper.create("/test", "data".getBytes(), aclList, CreateMode.PERSISTENT_SEQUENTIAL);
+        System.out.println(s.substring("/test".length()));
     }
 
     @Test
     public void exist() throws KeeperException, InterruptedException {
-        Stat exists = zooKeeper.exists("/test", null);
+        String path = "/test0000000064";
+        Stat exists = zooKeeper.exists(path, null);
         System.out.println(exists);
-
+        if (exists != null) zooKeeper.delete(path, -1);
+        Stat exists2 = zooKeeper.exists(path, null);
+        System.out.println(exists2);
     }
 
     @Test
     public void get() throws KeeperException, InterruptedException {
-        byte[] data = zooKeeper.getData("/test", null, null);
-        System.out.println(new String(data));
+//        byte[] data = zooKeeper.getData("/test", null, null);
+        List<String> stringList = zooKeeper.getChildren("/", false);
+//        System.out.println(new String(data));
+        stringList.forEach(System.out::println);
     }
 
     @Test
