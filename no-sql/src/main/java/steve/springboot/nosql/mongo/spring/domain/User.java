@@ -1,4 +1,4 @@
-package steve.springboot.nosql.mongo.domain;
+package steve.springboot.nosql.mongo.spring.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

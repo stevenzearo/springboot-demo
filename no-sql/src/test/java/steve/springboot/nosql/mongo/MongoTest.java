@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import steve.springboot.nosql.NoSqlApplicationTests;
-import steve.springboot.nosql.mongo.domain.User;
+import steve.springboot.nosql.mongo.spring.domain.User;
 
 /**
  * @author steve
