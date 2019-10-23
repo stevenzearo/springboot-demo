@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -65,8 +66,8 @@ public class ZookeeperLock {
     private boolean isMinimumLock() throws Exception {
         List<String> stringList = zooKeeper.getChildren(lockPath, false);
         List<Pair<String, Integer>> collect = stringList.stream()
-            .map(s -> new Pair<String, Integer>(s, Integer.valueOf(s.split("-")[s.split("-").length - 1])))
-            .sorted((p1, p2) -> p1.getValue() - p2.getValue())
+            .map(s -> new Pair<>(s, Integer.valueOf(s.split("-")[s.split("-").length - 1])))
+            .sorted(Comparator.comparingInt(Pair::getValue))
             .collect(Collectors.toList());
         return collect.get(0).getKey().equals(thisLock);
     }
