@@ -35,7 +35,8 @@ public class UserService {
 
     public void update(User user) {
         Query query = new Query(Criteria.where("_id").is(user.id));
-        Update update = new Update().set("name", user.name)
+        Update update = new Update();
+        update.set("name", user.name)
             .set("email", user.email)
             .set("age", user.age);
         template.updateFirst(query, update, User.class);

@@ -5,5 +5,19 @@ spring:
     elasticsearch:
       cluster-name: es
       cluster-nodes: localhost:9200
+  elasticsearch:
+    rest:
+      uris: ["http://192.168.10.68:9200"]
 server:
   port: 8444
+  undertow:
+    io-threads: 4
+    worker-threads: 20
+    buffer-size: 1024
+    direct-buffers: true
+logging:
+  level:
+    root: warn
+    org:
+      springframework:
+        web: debug

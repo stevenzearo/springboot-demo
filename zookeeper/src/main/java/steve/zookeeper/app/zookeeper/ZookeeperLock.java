@@ -1,6 +1,6 @@
 package steve.zookeeper.app.zookeeper;
 
-import jdk.internal.net.http.common.Pair;
+import javafx.util.Pair;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -21,11 +21,12 @@ import static org.apache.zookeeper.Watcher.Event.EventType.NodeDeleted;
  * @author steve
  */
 public class ZookeeperLock {
-    private ZooKeeper zooKeeper = null;
-    private String thisLock = null;
-    private String lockPath = null;
+    private static ZookeeperLock zookeeperLock = null;
+    private ZooKeeper zooKeeper;
+    private String thisLock;
+    private String lockPath;
 
-    public ZookeeperLock(String connectionString, String lockPath) throws Exception {
+    private ZookeeperLock(String connectionString, String lockPath) throws Exception {
         this.lockPath = lockPath;
         zooKeeper = new ZooKeeper(connectionString, 5000, null);
         Stat exists = zooKeeper.exists(lockPath, null);
@@ -55,16 +56,23 @@ public class ZookeeperLock {
         logger.warn("create a lock:" + thisLock);
     }
 
+    private synchronized void init() throws Exception {
+        if (zookeeperLock == null) {
+            zookeeperLock = new ZookeeperLock("127.0.0.1:2181", "/lock");
+        }
+    }
+
     private boolean isMinimumLock() throws Exception {
         List<String> stringList = zooKeeper.getChildren(lockPath, false);
         List<Pair<String, Integer>> collect = stringList.stream()
             .map(s -> new Pair<String, Integer>(s, Integer.valueOf(s.split("-")[s.split("-").length - 1])))
-            .sorted((p1, p2) -> p1.second - p2.second)
+            .sorted((p1, p2) -> p1.getValue() - p2.getValue())
             .collect(Collectors.toList());
-        return collect.get(0).first.equals(thisLock);
+        return collect.get(0).getKey().equals(thisLock);
     }
 
     public void acquire() throws Exception {
+        init();
         // 判断锁的状态valid, 判断当前锁是否为最小序号
         boolean onLock = false;
         Stat thisExists = zooKeeper.exists(thisLock, false);
@@ -86,5 +94,6 @@ public class ZookeeperLock {
         Stat lockExists = zooKeeper.exists(lockPath, false);
         zooKeeper.delete(thisLock, thisExists.getVersion());
         zooKeeper.setData(lockPath, "VALID".getBytes(), lockExists.getVersion() + 1);
+        zooKeeper.close();
     }
 }
