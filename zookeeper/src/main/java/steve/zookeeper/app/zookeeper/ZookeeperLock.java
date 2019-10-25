@@ -57,9 +57,9 @@ public class ZookeeperLock {
         logger.warn("create a lock:" + thisLock);
     }
 
-    private synchronized void init() throws Exception {
+    private synchronized void init(String key) throws Exception {
         if (zookeeperLock == null) {
-            zookeeperLock = new ZookeeperLock("127.0.0.1:2181", "/lock");
+            zookeeperLock = new ZookeeperLock("127.0.0.1:2181", "/lock/" + key);
         }
     }
 
@@ -72,8 +72,8 @@ public class ZookeeperLock {
         return collect.get(0).getKey().equals(thisLock);
     }
 
-    public void acquire() throws Exception {
-        init();
+    public void acquire(String key) throws Exception {
+        init(key);
         // 判断锁的状态valid, 判断当前锁是否为最小序号
         boolean onLock = false;
         Stat thisExists = zooKeeper.exists(thisLock, false);

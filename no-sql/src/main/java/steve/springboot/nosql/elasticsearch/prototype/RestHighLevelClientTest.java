@@ -17,9 +17,6 @@ import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.rest.RestStatus;
 import org.elasticsearch.search.SearchHits;
-import org.elasticsearch.search.aggregations.AggregationBuilders;
-import org.elasticsearch.search.aggregations.Aggregations;
-import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.junit.jupiter.api.AfterEach;
@@ -27,10 +24,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.mongodb.core.ExecutableAggregationOperation;
+import steve.springboot.nosql.elasticsearch.domain.Person;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * @author steve
@@ -50,7 +48,7 @@ public class RestHighLevelClientTest {
     @Test
     public void create() throws IOException {
         IndexRequest indexRequest = new IndexRequest("posts", "doc", "1");
-        Person steve = new Person("steve", "123@qq.com", 12);
+        Person steve = new Person(UUID.randomUUID().toString(), "steve", "123@qq.com", 12);
         indexRequest.source(new Gson().toJson(steve), XContentType.JSON);
         IndexResponse indexResponse = restHighLevelClient.index(indexRequest, RequestOptions.DEFAULT);
         long version = indexResponse.getVersion();
@@ -61,7 +59,7 @@ public class RestHighLevelClientTest {
     @Test
     public void asyncCreate() throws InterruptedException {
         IndexRequest indexRequest2 = new IndexRequest("posts", "doc", "2");
-        Person jerry = new Person("jerry", "qwer@gmail.com", 25);
+        Person jerry = new Person(UUID.randomUUID().toString(), "jerry", "qwer@gmail.com", 25);
         indexRequest2.source(new Gson().toJson(jerry), XContentType.JSON);
         restHighLevelClient.indexAsync(indexRequest2, RequestOptions.DEFAULT, new ActionListener<IndexResponse>() {
             @Override
