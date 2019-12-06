@@ -1,12 +1,7 @@
 package steve.springboot.nosql.elasticsearch.spring.service;
 
-import org.apache.lucene.search.Query;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.QueryStringQueryBuilder;
-import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
@@ -21,9 +16,6 @@ import java.util.List;
  */
 @Service
 public class PersonService {
-    public interface PersonRepository extends ElasticsearchRepository<Person, String> {
-    }
-
     @Autowired
     PersonRepository repository;
     @Autowired
@@ -47,5 +39,8 @@ public class PersonService {
 
     public void delete(String id) {
         repository.deleteById(id);
+    }
+
+    public interface PersonRepository extends ElasticsearchRepository<Person, String> {
     }
 }

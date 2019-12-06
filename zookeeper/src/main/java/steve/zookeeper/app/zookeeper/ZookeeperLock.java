@@ -1,6 +1,5 @@
 package steve.zookeeper.app.zookeeper;
 
-import javafx.util.Pair;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
@@ -11,6 +10,7 @@ import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -65,9 +65,9 @@ public class ZookeeperLock {
 
     private boolean isMinimumLock() throws Exception {
         List<String> stringList = zooKeeper.getChildren(lockPath, false);
-        List<Pair<String, Integer>> collect = stringList.stream()
-            .map(s -> new Pair<>(s, Integer.valueOf(s.split("-")[s.split("-").length - 1])))
-            .sorted(Comparator.comparingInt(Pair::getValue))
+        List<AbstractMap.SimpleEntry<String, Integer>> collect = stringList.stream()
+            .map(s -> new AbstractMap.SimpleEntry<>(s, Integer.valueOf(s.split("-")[s.split("-").length - 1])))
+            .sorted(Comparator.comparingInt(AbstractMap.SimpleEntry::getValue))
             .collect(Collectors.toList());
         return collect.get(0).getKey().equals(thisLock);
     }
