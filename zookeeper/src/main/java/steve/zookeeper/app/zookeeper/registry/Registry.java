@@ -83,15 +83,18 @@ public class Registry {
         ACL delete = new ACL(ZooDefs.Perms.DELETE, ZooDefs.Ids.ANYONE_ID_UNSAFE);
 
         List<ACL> aclList = List.of(create, read, write, delete);
-        String pathCreated = null;
+        String createPath = rootPath + "/" + className;
         try {
-            pathCreated = zooKeeper.create(rootPath + "/" + className, data.getBytes(), aclList, CreateMode.EPHEMERAL);
+
+            Stat exists = zooKeeper.exists(createPath, null);
+            if (exists == null)
+                createPath = zooKeeper.create(rootPath + "/" + className, data.getBytes(), aclList, CreateMode.EPHEMERAL);
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();
         }
         classMap.put(aClass, instance);
-        pathClassNameMap.put(pathCreated, className);
-        classNamePathMap.put(className, pathCreated);
+        pathClassNameMap.put(createPath, className);
+        classNamePathMap.put(className, createPath);
         classNameClassMap.put(className, aClass);
     }
 
