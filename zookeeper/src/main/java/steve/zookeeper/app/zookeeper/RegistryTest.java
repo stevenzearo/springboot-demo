@@ -22,8 +22,9 @@ public class RegistryTest {
         System.out.println(courseName);
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
-
-
-//        registry.registerService("/")
+        beanFactory.removeBean(CourseService.class);
+        String courseName1 = instance2.getCourseName();
+        System.out.println(courseName1);
+        scanner.nextLine();
     }
 }
