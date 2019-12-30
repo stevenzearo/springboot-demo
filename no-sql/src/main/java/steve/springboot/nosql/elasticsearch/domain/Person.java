@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @author steve
  */
 @Repository
-@Document(indexName = "", type = "")
+@Document(indexName = "person", type = "object")
 public class Person {
     @Id
     public String id;
@@ -18,8 +18,10 @@ public class Person {
     @Field(type = FieldType.Auto)
     public String name;
 
+    @Field(type = FieldType.Text)
     public String email;
 
+    @Field(type = FieldType.Integer)
     public Integer age;
 
     public Person() {

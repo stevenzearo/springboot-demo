@@ -6,6 +6,8 @@ import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import steve.springboot.nosql.elasticsearch.domain.Person;
 
@@ -39,8 +41,5 @@ public class PersonService {
 
     public void delete(String id) {
         repository.deleteById(id);
-    }
-
-    public interface PersonRepository extends ElasticsearchRepository<Person, String> {
     }
 }
