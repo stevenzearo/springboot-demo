@@ -7,7 +7,7 @@ spring:
       cluster-nodes: localhost:9200
   elasticsearch:
     rest:
-      uris: ["http://192.168.10.68:9200"]
+      uris: ["http://10.0.75.1:9200"]
   kafka:
     bootstrap-servers: 127.0.0.1:9092
     producer:
