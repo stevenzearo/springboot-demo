@@ -2,6 +2,7 @@ package steve.springboot.nosql.mongo.spring.domain;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 /**
  * @author steve
@@ -9,12 +10,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "user") // this annotation is for create collection
 public class User {
     @Id
+    @Field("_id")
     public String id;
 
+    @Field("name")
     public String name;
 
+    @Field("email")
     public String email;
 
+    @Field("age")
     public Integer age;
 
     public User() {

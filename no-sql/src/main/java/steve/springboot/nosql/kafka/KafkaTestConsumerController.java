@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("test/kafka")
 @RestController
 public class KafkaTestConsumerController {
-    @Autowired
+    @Autowired(required = false)
     ConsumerRecord<String, String> record;
 
     @KafkaListener(topics = {"test"}, groupId = "test")
