@@ -1,0 +1,82 @@
+plugins {
+    id 'java'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+allprojects {
+    apply plugin: 'java'
+
+    group = 'org.example'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
+configure(project(":mybatis-jpa-demo")) {
+
+    dependencies {
+//    implementation 'io.zipkin:zipkin-server:2.24.2'
+//    implementation 'io.zipkin:zipkin-lens:2.24.2'
+//    implementation 'org.springframework.boot:spring-boot-starter-logging:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-web:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
+        implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator:3.1.1'
+//    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0'
+        implementation 'io.micrometer:micrometer-tracing-bridge-brave:1.1.2'
+        implementation 'io.zipkin.reporter2:zipkin-reporter-brave:2.16.4'
+    }
+
+}
+
+configure(project(":no-sql-demo")) {
+    dependencies {
+//    implementation 'io.zipkin:zipkin-server:2.24.2'
+//    implementation 'io.zipkin:zipkin-lens:2.24.2'
+//    implementation 'org.springframework.boot:spring-boot-starter-logging:3.1.2'
+        implementation 'com.google.code.gson:gson:2.10.1'
+        implementation 'org.elasticsearch:elasticsearch:8.10.4'
+        implementation 'org.elasticsearch.client:elasticsearch-rest-client:8.10.4'
+//        implementation 'org.elasticsearch.client:elasticsearch-rest-high-level-client:7.17.14'
+
+        implementation 'org.springframework.boot:spring-boot-starter-web:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch:3.1.2'
+
+        implementation 'org.springframework.kafka:spring-kafka:3.0.12'
+
+        implementation 'org.springframework.boot:spring-boot-starter-actuator:3.1.1'
+
+//    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0'
+        implementation 'io.micrometer:micrometer-tracing-bridge-brave:1.1.2'
+        implementation 'io.zipkin.reporter2:zipkin-reporter-brave:2.16.4'
+    }
+}
+
+configure(project(":zookeeper-demo")) {
+    dependencies {
+//    implementation 'io.zipkin:zipkin-server:2.24.2'
+//    implementation 'io.zipkin:zipkin-lens:2.24.2'
+//    implementation 'org.springframework.boot:spring-boot-starter-logging:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-web:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
+        implementation 'org.apache.zookeeper:zookeeper:3.9.1'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator:3.1.1'
+//    implementation 'io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0'
+        implementation 'io.micrometer:micrometer-tracing-bridge-brave:1.1.2'
+        implementation 'io.zipkin.reporter2:zipkin-reporter-brave:2.16.4'
+    }
+}
+
+
+test {
+    useJUnitPlatform()
+}
