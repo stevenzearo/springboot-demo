@@ -1,5 +1,8 @@
 rootProject.name = 'springboot-demo'
 include 'mybatis-jpa-demo',
         'no-sql-demo',
-        'zookeeper-demo'
+        'zookeeper-demo',
+        'message-sender-service',
+        'message-sender-service-interface',
+        'message-receiver-service'
 

@@ -1,14 +1,9 @@
 plugins {
+    id 'idea'
     id 'java'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-allprojects {
+subprojects {
     apply plugin: 'java'
 
     group = 'org.example'
@@ -18,8 +13,8 @@ allprojects {
         mavenCentral()
     }
 }
-configure(project(":mybatis-jpa-demo")) {
 
+project(":mybatis-jpa-demo") {
     dependencies {
 //    implementation 'io.zipkin:zipkin-server:2.24.2'
 //    implementation 'io.zipkin:zipkin-lens:2.24.2'
@@ -36,7 +31,7 @@ configure(project(":mybatis-jpa-demo")) {
 
 }
 
-configure(project(":no-sql-demo")) {
+project(":no-sql-demo"){
     dependencies {
 //    implementation 'io.zipkin:zipkin-server:2.24.2'
 //    implementation 'io.zipkin:zipkin-lens:2.24.2'
@@ -61,7 +56,7 @@ configure(project(":no-sql-demo")) {
     }
 }
 
-configure(project(":zookeeper-demo")) {
+project(":zookeeper-demo") {
     dependencies {
 //    implementation 'io.zipkin:zipkin-server:2.24.2'
 //    implementation 'io.zipkin:zipkin-lens:2.24.2'
@@ -76,6 +71,33 @@ configure(project(":zookeeper-demo")) {
     }
 }
 
+project(":message-sender-service") {
+    dependencies {
+
+        project(":message-sender-service-interface")
+        implementation 'org.springframework.boot:spring-boot-starter-web:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
+        implementation 'com.rabbitmq:rabbitmq-client:0.9.1'
+        implementation 'commons-io:commons-io:2.11.0'
+    }
+}
+
+
+project(":message-sender-service-interface") {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-web:3.1.2'
+        implementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
+    }
+}
+
+
+project(":message-receiver-service") {
+    dependencies {
+        project(":message-sender-service-interface")
+        implementation 'com.rabbitmq:rabbitmq-client:0.9.1'
+        implementation 'commons-io:commons-io:2.11.0'
+    }
+}
 
 test {
     useJUnitPlatform()
