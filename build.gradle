@@ -99,6 +99,20 @@ project(":message-receiver-service") {
     }
 }
 
+project(":message-center-service") {
+    dependencies {
+        project(":message-center-service-interface")
+        implementation 'io.netty:netty-all:4.1.101.Final'
+    }
+}
+
+project(":message-center-service-interface") {
+    dependencies {
+
+
+    }
+}
+
 test {
     useJUnitPlatform()
 }

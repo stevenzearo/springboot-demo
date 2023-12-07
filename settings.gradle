@@ -4,5 +4,7 @@ include 'mybatis-jpa-demo',
         'zookeeper-demo',
         'message-sender-service',
         'message-sender-service-interface',
-        'message-receiver-service'
+        'message-receiver-service',
+        'message-center-service',
+        'message-center-service-interface'
 
