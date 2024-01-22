@@ -30,7 +30,6 @@ public class NettyClient {
             channelFuture = channel.writeAndFlush(ZonedDateTime.now() + ":hello, world!");
             Thread.sleep(500);
         }
-
     }
 
 }
