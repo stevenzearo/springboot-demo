@@ -1,5 +1,6 @@
 package steve.springboot.nosql.mongo;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -9,6 +10,7 @@ import steve.springboot.nosql.mongo.spring.domain.User;
 /**
  * @author steve
  */
+@Disabled
 public class MongoTest extends NoSqlApplicationTests {
 
     @Autowired

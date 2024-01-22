@@ -1,6 +1,6 @@
 package steve.springboot.mybatisjpa.dao.mybatis;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import steve.springboot.mybatisjpa.MybatisJpaApplicationTests;
 import steve.springboot.mybatisjpa.domain.User;
