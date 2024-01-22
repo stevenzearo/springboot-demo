@@ -18,7 +18,7 @@ springboot进行web项目开发。
 5. Kafka
 6. MongoDB
 7. Zookeeper
-
+6. RabbitMQ  
 ### Distributed System | 分布式系统
 1. Feign
 2. Netty
