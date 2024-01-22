@@ -1,8 +1,6 @@
 package steve.zookeeper.app.zookeeper;
 
 import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.ACL;
@@ -37,19 +35,15 @@ public class ZookeeperLock {
         List<String> children = zooKeeper.getChildren(lockPath, true);
         thisLock = zooKeeper.create(lockPath + "/" + lockPath + "-", "WAIT".getBytes(), aclList, CreateMode.EPHEMERAL_SEQUENTIAL);
         if (children.size() == 1) {
-            zooKeeper.exists(thisLock, new Watcher() {
-                @Override
-                public void process(WatchedEvent watchedEvent) {
-                    // 监听最小序号的删除状态，最小节点被删除后，锁的状态改为valid
-                    if (watchedEvent.getType() == NodeDeleted) {
-                        try {
-                            Stat lockExists = zooKeeper.exists(lockPath, false);
-                            zooKeeper.setData(lockPath, "VALID".getBytes(), lockExists.getVersion() + 1);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-
+            zooKeeper.exists(thisLock, watchedEvent -> {
+                if (watchedEvent.getType() == NodeDeleted) {
+                    try {
+                        Stat lockExists = zooKeeper.exists(lockPath, false);
+                        zooKeeper.setData(lockPath, "VALID".getBytes(), lockExists.getVersion() + 1);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
+
                 }
             });
         }
@@ -66,15 +60,14 @@ public class ZookeeperLock {
     private boolean isMinimumLock() throws Exception {
         List<String> stringList = zooKeeper.getChildren(lockPath, false);
         List<AbstractMap.SimpleEntry<String, Integer>> collect = stringList.stream()
-            .map(s -> new AbstractMap.SimpleEntry<>(s, Integer.valueOf(s.split("-")[s.split("-").length - 1])))
-            .sorted(Comparator.comparingInt(AbstractMap.SimpleEntry::getValue))
-            .collect(Collectors.toList());
+                                                                           .map(s -> new AbstractMap.SimpleEntry<>(s, Integer.valueOf(s.split("-")[s.split("-").length - 1])))
+                                                                           .sorted(Comparator.comparingInt(AbstractMap.SimpleEntry::getValue))
+                                                                           .collect(Collectors.toList());
         return collect.get(0).getKey().equals(thisLock);
     }
 
     public void acquire(String key) throws Exception {
         init(key);
-        // 判断锁的状态valid, 判断当前锁是否为最小序号
         boolean onLock = false;
         Stat thisExists = zooKeeper.exists(thisLock, false);
         String thisData = new String(zooKeeper.getData(thisLock, false, thisExists));
