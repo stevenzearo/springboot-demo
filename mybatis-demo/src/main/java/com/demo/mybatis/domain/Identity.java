@@ -1,6 +1,4 @@
-package steve.springboot.mybatisjpa.domain;
-
-import jakarta.persistence.*;
+package com.demo.mybatis.domain;
 
 /**
  * Author  ZLH
@@ -8,17 +6,12 @@ import jakarta.persistence.*;
  * Time  19:20
  * Version  1.0
  */
-@Entity
-@Table(name = "users")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+public class Identity {
     public Integer id;
 
-    @Column(name = "name")
     public String name;
 
-    @Column(name = "age")
     public Integer age;
 
     @Override

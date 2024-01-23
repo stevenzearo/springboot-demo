@@ -1,13 +1,13 @@
-package steve.springboot.mybatisjpa;
+package com.demo.mybatis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MybatisJpaApplication {
+public class MybatisDemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MybatisJpaApplication.class, args);
+        SpringApplication.run(MybatisDemoApplication.class, args);
     }
 
 }
