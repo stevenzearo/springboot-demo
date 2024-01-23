@@ -4,6 +4,7 @@ plugins {
 }
 
 subprojects {
+    apply plugin: "idea"
     apply plugin: "java"
 
     group = "org.example"
@@ -15,25 +16,29 @@ subprojects {
 }
 
 def SPRING_BOOT_VERSION = "3.2.2"
+def MYBATIS_VERSION = "3.0.3"
 
-project(":mybatis-jpa-demo") {
+project(":mybatis-demo") {
     dependencies {
-//    implementation "io.zipkin:zipkin-server:2.24.2"
-//    implementation "io.zipkin:zipkin-lens:2.24.2"
-//    implementation "org.springframework.boot:spring-boot-starter-logging:$SPRING_BOOT_VERSION"
         implementation "org.springframework.boot:spring-boot-starter-web:$SPRING_BOOT_VERSION"
-        implementation "org.springframework.boot:spring-boot-starter-test:$SPRING_BOOT_VERSION"
-        implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2"
-        implementation "org.springframework.boot:spring-boot-starter-data-jpa:$SPRING_BOOT_VERSION"
-        implementation "org.springframework.boot:spring-boot-starter-actuator:3.1.1"
-//    implementation "io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0"
-        implementation "io.micrometer:micrometer-tracing-bridge-brave:1.1.2"
-        implementation "io.zipkin.reporter2:zipkin-reporter-brave:2.16.4"
-    }
+        implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:$MYBATIS_VERSION"
 
+//        implementation "org.springframework.boot:spring-boot-starter-logging:$SPRING_BOOT_VERSION"
+//        implementation "org.springframework.boot:spring-boot-starter-actuator:3.1.1"
+//        implementation "io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0"
+//        implementation "io.micrometer:micrometer-tracing-bridge-brave:1.1.2"
+//        implementation "io.zipkin.reporter2:zipkin-reporter-brave:2.16.4"
+    }
 }
 
-project(":no-sql-demo"){
+project(":jpa-demo") {
+    dependencies {
+        implementation "org.springframework.boot:spring-boot-starter-web:$SPRING_BOOT_VERSION"
+        implementation "org.springframework.boot:spring-boot-starter-data-jpa:$SPRING_BOOT_VERSION"
+    }
+}
+
+project(":no-sql-demo") {
     dependencies {
 //    implementation "io.zipkin:zipkin-server:2.24.2"
 //    implementation "io.zipkin:zipkin-lens:2.24.2"
