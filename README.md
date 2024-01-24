@@ -22,10 +22,15 @@ springboot进行web项目开发。
 ### Distributed System | 分布式系统
 1. Feign
 2. Netty
+### Github CI/CD
+1. GitHub Actions  
+  Configurations to see file /.github/workflows/gradle.yml  
+  配置文件参考文件：/.github/workflows/gradle.yml
 
 ### Contact US | 联系我们
-1. Wechat Official Account | 微信公众号  
-    **FrenziedJavaLand**
-
-2. GitHub Account  
+1. GitHub Account  
     **stevenzearo**
+
+2. Wechat Official Account | 微信公众号  
+    **FrenziedJavaLand**
+    ![frenziedJavaLand](./docs/img/frenziedJavaLand.jpg)
