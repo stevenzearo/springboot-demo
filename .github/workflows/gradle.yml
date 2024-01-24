@@ -35,4 +35,4 @@ jobs:
         gradle-version: 8.4
 
     - name: Execute Gradle build
-      run: chmod +x & ./gradlew build
+      run: chmod +x ./gradlew & ./gradlew build
