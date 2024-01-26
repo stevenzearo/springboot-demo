@@ -1,6 +1,5 @@
 package com.demo;
 
-import com.demo.api.MessageSenderWebService;
 import com.demo.config.FeignConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

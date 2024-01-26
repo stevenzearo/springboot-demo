@@ -1,0 +1,20 @@
+plugins {
+    id 'application'
+}
+
+apply plugin: "application"
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+sourceSets {
+    mainClassName = 'com.demo.jpa.JpaDemoApplication'
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+}
