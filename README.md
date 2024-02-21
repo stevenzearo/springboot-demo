@@ -27,6 +27,13 @@ springboot进行web项目开发。
   Configurations to see file /.github/workflows/gradle.yml  
   配置文件参考文件：/.github/workflows/gradle.yml
 
+### Service Deploying in Kubernetes | k8s中的服务部署
+Please see service deploying file under /deployments  
+相关服务部署文件位置/deployments
+
+### Flyway Migration | flyway数据库迁移
+Please see module of **demo-db-migration**
+
 ### Contact US | 联系我们
 1. GitHub Account  
     **stevenzearo**

@@ -1,5 +1,8 @@
 package com.demo.mybatis.domain;
 
+import java.sql.Timestamp;
+import java.time.ZonedDateTime;
+
 /**
  * Author  ZLH
  * Date  2019/10/3
@@ -8,18 +11,24 @@ package com.demo.mybatis.domain;
  */
 
 public class Identity {
-    public Integer id;
+    public String id;
 
     public String name;
 
     public Integer age;
 
+    public String createdBy;
+
+    public ZonedDateTime createdTime;
+
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "Identity{" +
+            "id='" + id + '\'' +
+            ", name='" + name + '\'' +
+            ", age=" + age +
+            ", createdBy='" + createdBy + '\'' +
+            ", createdTime=" + createdTime +
+            '}';
     }
 }
