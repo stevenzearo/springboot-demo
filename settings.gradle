@@ -7,5 +7,6 @@ include 'mybatis-demo',
         'message-sender-service-interface',
         'message-receiver-service',
         'message-center-service',
-        'message-center-service-interface'
+        'message-center-service-interface',
+        'demo-db-migration'
 

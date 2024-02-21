@@ -1,6 +1,5 @@
 plugins {
     id "idea"
-    id "java"
 }
 
 subprojects {
@@ -17,9 +16,11 @@ subprojects {
 
 def SPRING_BOOT_VERSION = "3.2.2"
 def MYBATIS_VERSION = "3.0.3"
+def MYSQL_VERSION = "8.0.33"
 
 project(":mybatis-demo") {
     dependencies {
+        implementation("mysql:mysql-connector-java:$MYSQL_VERSION")
         implementation "org.springframework.boot:spring-boot-starter-web:$SPRING_BOOT_VERSION"
         implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:$MYBATIS_VERSION"
 
@@ -121,6 +122,8 @@ project(":message-center-service-interface") {
     }
 }
 
-test {
-    useJUnitPlatform()
+project(":demo-db-migration") {
+    dependencies {
+        implementation("mysql:mysql-connector-java:$MYSQL_VERSION")
+    }
 }
