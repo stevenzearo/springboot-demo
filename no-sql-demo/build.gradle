@@ -8,7 +8,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 sourceSets {
-    mainClassName = 'steve.springboot.nosql.NoSqlApplication' // todo
+    mainClassName = 'com.demo.nosql.NoSqlApplication' // todo
     main {
         java {
             srcDirs = ['src/main/java']
@@ -17,4 +17,8 @@ sourceSets {
             srcDirs = ['src/main/resources']
         }
     }
+}
+
+test {
+    useJUnitPlatform()
 }
