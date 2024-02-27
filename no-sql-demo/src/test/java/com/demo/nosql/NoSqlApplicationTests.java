@@ -1,0 +1,12 @@
+package com.demo.nosql;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+public class NoSqlApplicationTests {
+
+    @Test
+    public void contextLoads() {
+    }
+}

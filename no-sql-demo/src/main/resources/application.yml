@@ -3,11 +3,13 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017/spring
     elasticsearch:
-      cluster-name: es
+      cluster-name: docker-cluster
       cluster-nodes: localhost:9200
+      repositories:
+        enabled: true
   elasticsearch:
     rest:
-      uris: ["http://localhost:9200"]
+      uris: ["http://127.0.0.1:9200"]
   kafka:
     bootstrap-servers: 127.0.0.1:9092
     producer:
@@ -28,7 +30,7 @@ server:
     direct-buffers: true
 logging:
   level:
-    root: error
+    root: info
     org:
       springframework:
         web: error
