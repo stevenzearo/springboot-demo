@@ -1,18 +1,21 @@
-package com.demo.nosql.elasticsearch.web;
+package com.demo.nosql.elasticsearch.web.impl;
 
+import com.demo.nosql.elasticsearch.web.ESPersonWebService;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.demo.nosql.elasticsearch.domain.Person;
 import com.demo.nosql.elasticsearch.service.ESPersonService;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
  * @author steve
  */
-@Component
+@RestController
 public class ESPersonServiceImpl implements ESPersonWebService {
-    @Autowired
+    @Resource
     ESPersonService personService;
 
     @Override

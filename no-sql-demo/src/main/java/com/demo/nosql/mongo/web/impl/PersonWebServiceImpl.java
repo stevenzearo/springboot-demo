@@ -1,7 +1,8 @@
-package com.demo.nosql.mongo.web;
+package com.demo.nosql.mongo.web.impl;
 
 import com.demo.nosql.mongo.domain.Address;
 import com.demo.nosql.mongo.domain.Location;
+import com.demo.nosql.mongo.web.PersonWebService;
 import com.demo.nosql.mongo.web.person.CreatePersonRequest;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
