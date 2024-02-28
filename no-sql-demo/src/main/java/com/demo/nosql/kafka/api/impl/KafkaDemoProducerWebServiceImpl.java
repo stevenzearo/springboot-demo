@@ -1,5 +1,7 @@
-package com.demo.nosql.kafka;
+package com.demo.nosql.kafka.api.impl;
 
+import com.demo.nosql.kafka.api.KafkaDemoProducerWebService;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -11,14 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @author steve
  */
-@RequestMapping("/test/kafka")
 @RestController
-@Component
-public class KafkaTestProducerController {
-    @Autowired(required = false)
+public class KafkaDemoProducerWebServiceImpl implements KafkaDemoProducerWebService {
+    @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
 
-    @RequestMapping(value = "/message", method = RequestMethod.POST)
     public String sendMessage(@RequestBody String message) {
         kafkaTemplate.send("test", message);
         return "message send successfully";

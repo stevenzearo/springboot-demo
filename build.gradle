@@ -55,7 +55,7 @@ project(":no-sql-demo") {
         implementation "org.springframework.boot:spring-boot-starter-data-mongodb:$SPRING_BOOT_VERSION"
         implementation "org.springframework.boot:spring-boot-starter-data-elasticsearch:$SPRING_BOOT_VERSION"
 
-        implementation "org.springframework.kafka:spring-kafka:3.0.12"
+        implementation "org.springframework.kafka:spring-kafka:3.1.2"
 
         implementation "org.springframework.boot:spring-boot-starter-actuator:3.1.1"
 
