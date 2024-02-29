@@ -6,8 +6,8 @@ subprojects {
     apply plugin: "idea"
     apply plugin: "java"
 
-    group = "org.example"
-    version = "1.0-SNAPSHOT"
+    group = "com.example"
+    version = "0.0.1-SNAPSHOT"
 
     repositories {
         mavenCentral()
@@ -23,12 +23,6 @@ project(":mybatis-demo") {
         implementation("mysql:mysql-connector-java:$MYSQL_VERSION")
         implementation "org.springframework.boot:spring-boot-starter-web:$SPRING_BOOT_VERSION"
         implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter:$MYBATIS_VERSION"
-
-//        implementation "org.springframework.boot:spring-boot-starter-logging:$SPRING_BOOT_VERSION"
-//        implementation "org.springframework.boot:spring-boot-starter-actuator:3.1.1"
-//        implementation "io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0"
-//        implementation "io.micrometer:micrometer-tracing-bridge-brave:1.1.2"
-//        implementation "io.zipkin.reporter2:zipkin-reporter-brave:2.16.4"
     }
 }
 
@@ -42,9 +36,6 @@ project(":jpa-demo") {
 
 project(":no-sql-demo") {
     dependencies {
-//    implementation "io.zipkin:zipkin-server:2.24.2"
-//    implementation "io.zipkin:zipkin-lens:2.24.2"
-//    implementation "org.springframework.boot:spring-boot-starter-logging:$SPRING_BOOT_VERSION"
         implementation "com.google.code.gson:gson:2.10.1"
         implementation "org.elasticsearch:elasticsearch:8.10.4"
         implementation "org.elasticsearch.client:elasticsearch-rest-client:8.10.4"
@@ -56,27 +47,14 @@ project(":no-sql-demo") {
         implementation "org.springframework.boot:spring-boot-starter-data-elasticsearch:$SPRING_BOOT_VERSION"
 
         implementation "org.springframework.kafka:spring-kafka:3.1.2"
-
-        implementation "org.springframework.boot:spring-boot-starter-actuator:3.1.1"
-
-//    implementation "io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0"
-        implementation "io.micrometer:micrometer-tracing-bridge-brave:1.1.2"
-        implementation "io.zipkin.reporter2:zipkin-reporter-brave:2.16.4"
     }
 }
 
 project(":zookeeper-demo") {
     dependencies {
-//    implementation "io.zipkin:zipkin-server:2.24.2"
-//    implementation "io.zipkin:zipkin-lens:2.24.2"
-//    implementation "org.springframework.boot:spring-boot-starter-logging:$SPRING_BOOT_VERSION"
         implementation "org.springframework.boot:spring-boot-starter-web:$SPRING_BOOT_VERSION"
         implementation "org.springframework.boot:spring-boot-starter-test:$SPRING_BOOT_VERSION"
         implementation "org.apache.zookeeper:zookeeper:3.9.1"
-        implementation "org.springframework.boot:spring-boot-starter-actuator:3.1.1"
-//    implementation "io.opentelemetry:opentelemetry-exporter-zipkin:1.26.0"
-        implementation "io.micrometer:micrometer-tracing-bridge-brave:1.1.2"
-        implementation "io.zipkin.reporter2:zipkin-reporter-brave:2.16.4"
     }
 }
 
