@@ -1,5 +1,6 @@
-package steve.zookeeper.app.zookeeper;
+package com.demo.zookeeper.service;
 
+import com.demo.zookeeper.util.ListUtil;
 import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
@@ -9,7 +10,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.AbstractMap;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,8 +29,7 @@ public class ZookeeperLock {
         this.lockPath = lockPath;
         zooKeeper = new ZooKeeper(connectionString, 5000, null);
         Stat exists = zooKeeper.exists(lockPath, null);
-        List<ACL> aclList = new ArrayList<>();
-        aclList.add(new ACL(ZooDefs.Perms.ALL, ZooDefs.Ids.AUTH_IDS));
+        List<ACL> aclList = ListUtil.arrayListOf(new ACL(ZooDefs.Perms.ALL, ZooDefs.Ids.AUTH_IDS));
         if (exists == null) zooKeeper.create(lockPath, "VALID".getBytes(), aclList, CreateMode.PERSISTENT);
         List<String> children = zooKeeper.getChildren(lockPath, true);
         thisLock = zooKeeper.create(lockPath + "/" + lockPath + "-", "WAIT".getBytes(), aclList, CreateMode.EPHEMERAL_SEQUENTIAL);

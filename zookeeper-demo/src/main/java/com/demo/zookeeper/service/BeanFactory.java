@@ -1,6 +1,6 @@
-package steve.zookeeper.app.zookeeper.management;
+package com.demo.zookeeper.service;
 
-import steve.zookeeper.app.zookeeper.registry.Registry;
+import com.demo.zookeeper.registry.Registry;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;

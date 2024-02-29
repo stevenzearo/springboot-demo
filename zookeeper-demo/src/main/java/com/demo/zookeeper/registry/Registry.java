@@ -1,11 +1,7 @@
-package steve.zookeeper.app.zookeeper.registry;
+package com.demo.zookeeper.registry;
 
-import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooDefs;
-import org.apache.zookeeper.ZooKeeper;
+import com.demo.zookeeper.util.ListUtil;
+import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Stat;
 import org.slf4j.Logger;
@@ -62,11 +58,11 @@ public class Registry {
         ACL write = new ACL(ZooDefs.Perms.WRITE, ZooDefs.Ids.ANYONE_ID_UNSAFE);
         ACL delete = new ACL(ZooDefs.Perms.DELETE, ZooDefs.Ids.ANYONE_ID_UNSAFE);
 
-        List<ACL> aclList = List.of(create, read, write, delete);
+        List<ACL> aclList = ListUtil.arrayListOf(create, read, write, delete);
         try {
             Stat exists = zooKeeper.exists(rootPath, null);
             if (exists == null)
-                this.rootPath = zooKeeper.create(rootPath, null, aclList, CreateMode.PERSISTENT);
+                this.rootPath = zooKeeper.create(rootPath, new byte[0], aclList, CreateMode.PERSISTENT);
         } catch (KeeperException | InterruptedException e) {
             e.printStackTrace();
         }
@@ -77,12 +73,12 @@ public class Registry {
         if (!aClass.isInstance(instance)) throw new Exception("object is not class's instance");
         String className = aClass.getCanonicalName();
         String data = instance.getClass().getCanonicalName();
+
         ACL create = new ACL(ZooDefs.Perms.CREATE, ZooDefs.Ids.ANYONE_ID_UNSAFE);
         ACL read = new ACL(ZooDefs.Perms.READ, ZooDefs.Ids.ANYONE_ID_UNSAFE);
         ACL write = new ACL(ZooDefs.Perms.WRITE, ZooDefs.Ids.ANYONE_ID_UNSAFE);
         ACL delete = new ACL(ZooDefs.Perms.DELETE, ZooDefs.Ids.ANYONE_ID_UNSAFE);
-
-        List<ACL> aclList = List.of(create, read, write, delete);
+        List<ACL> aclList = ListUtil.arrayListOf(create, read, write, delete); // convert to ArrayList to avoid NPE
         String createPath = rootPath + "/" + className;
         try {
 

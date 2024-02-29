@@ -1,4 +1,4 @@
-package steve.zookeeper.app.zookeeper.service;
+package com.demo.zookeeper.service;
 
 /**
  * @author steve
