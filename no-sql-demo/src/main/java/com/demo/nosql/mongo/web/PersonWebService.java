@@ -16,18 +16,18 @@ import java.util.List;
 @RestController
 public interface PersonWebService {
 
-    @RequestMapping(value = "/api/person", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/mongo/person", method = RequestMethod.POST)
     Person create(@RequestBody CreatePersonRequest request);
 
-    @RequestMapping(value = "/api/person/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/mongo/person/{id}", method = RequestMethod.GET)
     Person get(@PathVariable("id") String id);
 
-    @RequestMapping(value = "/api/person/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/mongo/person/{id}", method = RequestMethod.PUT)
     void update(@PathVariable("id") String id, @RequestBody Person person);
 
-    @RequestMapping(value = "/api/person", method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/mongo/person", method = RequestMethod.PUT)
     List<Person> search(@RequestBody String name);
 
-    @RequestMapping(value = "/api/person/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/api/mongo/person/{id}", method = RequestMethod.DELETE)
     void delete(@PathVariable("id") String id);
 }
