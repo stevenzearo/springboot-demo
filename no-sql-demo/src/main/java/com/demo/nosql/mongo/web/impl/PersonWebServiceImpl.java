@@ -3,17 +3,12 @@ package com.demo.nosql.mongo.web.impl;
 import com.demo.nosql.mongo.domain.Address;
 import com.demo.nosql.mongo.domain.Location;
 import com.demo.nosql.mongo.web.PersonWebService;
-import com.demo.nosql.mongo.web.person.CreatePersonRequest;
+import com.demo.nosql.mongo.web.person.*;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import com.demo.nosql.mongo.domain.Person;
 import com.demo.nosql.mongo.service.PersonService;
-
-import java.util.List;
-import java.util.UUID;
 
 /**
  * @author steve
@@ -24,7 +19,7 @@ public class PersonWebServiceImpl implements PersonWebService {
     @Autowired
     PersonService service;
 
-    public Person create(CreatePersonRequest request) {
+    public CreatePersonResponse create(CreatePersonRequest request) {
         Person person = new Person();
         person.id = new ObjectId();
         person.name = request.name;
@@ -46,20 +41,23 @@ public class PersonWebServiceImpl implements PersonWebService {
 
             person.address = address;
         }
-        return service.create(person);
+        Person createdPerson = service.create(person);
+        String id = createdPerson.id.toString();
+        CreatePersonResponse response = new CreatePersonResponse();
+        response.id = id;
+        return response;
     }
 
     public Person get(String id) {
         return service.get(id);
     }
 
-    public void update(String id, Person person) {
-        person.id = new ObjectId(id);
-        service.update(person);
+    public void update(String id, UpdatePersonRequest request) {
+        service.update(id, request);
     }
 
-    public List<Person> search(String name) {
-        return service.searchByName(name);
+    public SearchPersonResponse search(SearchPersonRequest request) {
+        return service.search(request);
     }
 
     public void delete(String id) {

@@ -1,13 +1,14 @@
 package com.demo.nosql.mongo.web.person;
 
-import java.time.ZonedDateTime;
 
-public class CreatePersonRequest {
+public class PersonView {
+    public String id;
+
+    public Integer age;
+
     public String name;
 
     public String email;
-
-    public ZonedDateTime birthday;
 
     public AddressView address;
 }
