@@ -1,27 +1,35 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/spring
-    elasticsearch:
-      cluster-name: docker-cluster
-      cluster-nodes: localhost:9200
-      repositories:
-        enabled: true
-  elasticsearch:
-    rest:
-      uris: ["http://127.0.0.1:9200"]
+      uri: mongodb://192.168.1.4:30017/spring
+
   kafka:
-    bootstrap-servers: 127.0.0.1:9092
+    bootstrap-servers: ["192.168.1.4:30092"]
     producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      bootstrap-servers: ["192.168.1.4:30092"]
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      client-id: "test-producer"
     consumer:
-      group-id: test
+      bootstrap-servers: ["192.168.1.4:30092"]
+      group-id: test-consumer
       enable-auto-commit: true
       auto-commit-interval: 1000
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       auto-offset-reset: earliest
+      client-id: "test-consumer"
+    listener:
+      concurrency: 5
+      type: single
+
+
+  elasticsearch:
+    uris: ["http://192.168.1.4:30200"]
+
 server:
   port: 8444
   undertow:

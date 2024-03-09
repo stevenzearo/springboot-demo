@@ -1,4 +1,4 @@
-package com.demo.nosql.mongo.web.impl;
+package com.demo.nosql.mongo.api.impl;
 
 import com.demo.nosql.mongo.domain.Address;
 import com.demo.nosql.mongo.domain.Person;
