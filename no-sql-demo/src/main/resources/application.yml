@@ -1,17 +1,17 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://localhost:27017/spring
+      uri: mongodb://192.168.1.4:30017/spring
     elasticsearch:
       cluster-name: docker-cluster
-      cluster-nodes: localhost:9200
+      cluster-nodes: 192.168.1.4:30200
       repositories:
         enabled: true
   elasticsearch:
     rest:
-      uris: ["http://127.0.0.1:9200"]
+      uris: ["http://192.168.1.4:30200"]
   kafka:
-    bootstrap-servers: 127.0.0.1:9092
+    bootstrap-servers: 192.168.1.4:30092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
