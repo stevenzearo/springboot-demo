@@ -24,7 +24,7 @@ spring:
       client-id: "test-consumer"
     listener:
       concurrency: 5
-      type: batch
+      type: single
 
 
   elasticsearch:
