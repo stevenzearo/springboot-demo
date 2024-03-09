@@ -1,4 +1,4 @@
-package com.demo.nosql.mongo.web.person;
+package com.demo.nosql.mongo.api.person;
 
 
 public class PersonView {

@@ -1,14 +1,14 @@
 package com.demo.nosql.mongo.api.impl;
 
+import com.demo.nosql.mongo.api.PersonWebService;
+import com.demo.nosql.mongo.api.person.CreatePersonRequest;
+import com.demo.nosql.mongo.api.person.CreatePersonResponse;
+import com.demo.nosql.mongo.api.person.SearchPersonRequest;
+import com.demo.nosql.mongo.api.person.SearchPersonResponse;
+import com.demo.nosql.mongo.api.person.UpdatePersonRequest;
 import com.demo.nosql.mongo.domain.Address;
 import com.demo.nosql.mongo.domain.Person;
 import com.demo.nosql.mongo.service.PersonService;
-import com.demo.nosql.mongo.web.PersonWebService;
-import com.demo.nosql.mongo.web.person.CreatePersonRequest;
-import com.demo.nosql.mongo.web.person.CreatePersonResponse;
-import com.demo.nosql.mongo.web.person.SearchPersonRequest;
-import com.demo.nosql.mongo.web.person.SearchPersonResponse;
-import com.demo.nosql.mongo.web.person.UpdatePersonRequest;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;

@@ -1,14 +1,14 @@
 package com.demo.nosql.mongo.service;
 
 import com.demo.nosql.common.Util;
+import com.demo.nosql.mongo.api.person.AddressView;
+import com.demo.nosql.mongo.api.person.LocationView;
+import com.demo.nosql.mongo.api.person.PersonView;
+import com.demo.nosql.mongo.api.person.SearchPersonRequest;
+import com.demo.nosql.mongo.api.person.SearchPersonResponse;
+import com.demo.nosql.mongo.api.person.UpdatePersonRequest;
 import com.demo.nosql.mongo.domain.Address;
 import com.demo.nosql.mongo.domain.Person;
-import com.demo.nosql.mongo.web.person.AddressView;
-import com.demo.nosql.mongo.web.person.LocationView;
-import com.demo.nosql.mongo.web.person.PersonView;
-import com.demo.nosql.mongo.web.person.SearchPersonRequest;
-import com.demo.nosql.mongo.web.person.SearchPersonResponse;
-import com.demo.nosql.mongo.web.person.UpdatePersonRequest;
 import jakarta.annotation.Resource;
 import org.bson.types.ObjectId;
 import org.springframework.data.geo.Point;
