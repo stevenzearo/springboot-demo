@@ -32,10 +32,14 @@ public class ESPersonService {
     }
 
     public List<Person> search(Person person) {
-        NativeQuery query = new NativeQueryBuilder()
-            .withQuery(new StringQuery(person.name))
-            .withQuery(new StringQuery(person.email))
-            .build();
+        NativeQueryBuilder nativeQueryBuilder = new NativeQueryBuilder();
+        if (person.name != null) {
+            nativeQueryBuilder.withQuery(new StringQuery(person.name));
+        }
+        if (person.email!= null) {
+            nativeQueryBuilder.withQuery(new StringQuery(person.email));
+        }
+        NativeQuery query = nativeQueryBuilder.build();
         return elasticsearchTemplate.search(query, Person.class).getSearchHits()
                 .stream().map(SearchHit::getContent).collect(Collectors.toList());
     }

@@ -2,7 +2,7 @@ package com.demo.nosql.mongo.api.person;
 
 import java.time.ZonedDateTime;
 
-public class CreatePersonRequest {
+public class UpdatePersonRequest {
     public String name;
 
     public String email;
