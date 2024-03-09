@@ -1,14 +1,16 @@
 package com.demo.nosql.mongo.api;
 
-import com.demo.nosql.mongo.api.person.*;
+import com.demo.nosql.mongo.api.person.CreatePersonRequest;
+import com.demo.nosql.mongo.api.person.CreatePersonResponse;
+import com.demo.nosql.mongo.api.person.SearchPersonRequest;
+import com.demo.nosql.mongo.api.person.SearchPersonResponse;
+import com.demo.nosql.mongo.api.person.UpdatePersonRequest;
+import com.demo.nosql.mongo.domain.Person;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.demo.nosql.mongo.domain.Person;
-
-import java.util.List;
 
 /**
  * @author steve
