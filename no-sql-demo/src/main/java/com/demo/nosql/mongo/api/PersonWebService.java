@@ -1,6 +1,6 @@
-package com.demo.nosql.mongo.web;
+package com.demo.nosql.mongo.api;
 
-import com.demo.nosql.mongo.web.person.CreatePersonRequest;
+import com.demo.nosql.mongo.api.person.CreatePersonRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

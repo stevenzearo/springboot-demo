@@ -1,19 +1,16 @@
-package com.demo.nosql.mongo.web.impl;
+package com.demo.nosql.mongo.api.impl;
 
 import com.demo.nosql.mongo.domain.Address;
 import com.demo.nosql.mongo.domain.Location;
-import com.demo.nosql.mongo.web.PersonWebService;
-import com.demo.nosql.mongo.web.person.CreatePersonRequest;
+import com.demo.nosql.mongo.api.PersonWebService;
+import com.demo.nosql.mongo.api.person.CreatePersonRequest;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import com.demo.nosql.mongo.domain.Person;
 import com.demo.nosql.mongo.service.PersonService;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * @author steve

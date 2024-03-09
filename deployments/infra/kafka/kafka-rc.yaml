@@ -17,3 +17,8 @@ spec:
           image: apache/kafka:3.7.0
           ports:
             - containerPort: 9092
+          env:
+            - name: listeners
+              value: "PLAINTEXT://0.0.0.0:30092"
+            - name: advertised.listeners
+              value: "PLAINTEXT://192.168.1.4:30092"

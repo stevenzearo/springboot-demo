@@ -2,14 +2,14 @@ package com.demo.nosql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
-import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.annotation.KafkaBootstrapConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @EnableElasticsearchRepositories("com.demo.nosql.elasticsearch.repository")
-@EnableKafka
 @SpringBootApplication
 public class NoSqlApplication {
 
