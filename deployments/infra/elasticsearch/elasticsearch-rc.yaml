@@ -23,10 +23,9 @@ spec:
               name: transport
               protocol: TCP
           env:
-            - name: DISCOVERY_TYPE
-              value: single-node
-            - name: XPACK_SECURITY_ENABLED
+            - name: SECURITY_ENABLED
               value: false
+
           resources:
             limits:
               cpu: 500m
