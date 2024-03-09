@@ -18,7 +18,7 @@ spec:
           ports:
             - containerPort: 9092
           env:
-            - name: KAFKA_ADVERTISED_HOST_NAME
-              value: "localhost"
-            - name: KAFKA_ADVERTISED_PORT
-              value: "9092"
+            - name: listeners
+              value: "PLAINTEXT://0.0.0.0:30092"
+            - name: advertised.listeners
+              value: "PLAINTEXT://192.168.1.4:30092"
