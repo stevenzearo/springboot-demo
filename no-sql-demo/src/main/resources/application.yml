@@ -4,19 +4,28 @@ spring:
       uri: mongodb://192.168.1.4:30017/spring
 
   kafka:
+    bootstrap-servers: ["192.168.1.4:9092"]
     producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      bootstrap-servers: ["192.168.1.4:9092"]
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      bootstrap-servers: ["192.168.1.4:30090"]
       client-id: "test-producer"
     consumer:
-      bootstrap-servers: "192.168.1.3:30090"
+      bootstrap-servers: ["192.168.1.4:9092"]
       group-id: test-consumer
       enable-auto-commit: true
       auto-commit-interval: 1000
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       auto-offset-reset: earliest
+      client-id: "test-consumer"
+    listener:
+      concurrency: 5
+      type: batch
+
 
   elasticsearch:
     uris: ["http://192.168.1.4:30200"]
