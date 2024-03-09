@@ -22,9 +22,7 @@ spec:
             - containerPort: 9300
               name: transport
               protocol: TCP
-          env:
-            - name: SECURITY_ENABLED
-              value: false
+
 
           resources:
             limits:
