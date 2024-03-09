@@ -7,8 +7,14 @@ spec:
   selector:
     app: elasticsearch-service
   ports:
-    - port: 9200
+    - name: db
+      port: 9200
       targetPort: 9200
       protocol: TCP
       nodePort: 30200
+    - name: transport
+      port: 9300
+      targetPort: 9300
+      protocol: TCP
+      nodePort: 30300
   type: NodePort

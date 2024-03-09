@@ -17,3 +17,15 @@ spec:
           image: elasticsearch:8.12.2
           ports:
             - containerPort: 9200
+              name: db
+              protocol: TCP
+            - containerPort: 9300
+              name: transport
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 500m
+              memory: 1Gi
+            requests:
+              cpu: 200m
+              memory: 500Mi
