@@ -1,5 +1,7 @@
 package com.demo.nosql.mongo.domain;
 
+import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
@@ -18,5 +20,5 @@ public class Address {
     public String zipCode;
 
     @GeoSpatialIndexed(name = "location", type = GeoSpatialIndexType.GEO_2DSPHERE)
-    public Location location;
+    public GeoJsonPoint location;
 }

@@ -2,13 +2,18 @@ package com.demo.nosql.mongo.service;
 
 import com.demo.nosql.common.Util;
 import com.demo.nosql.mongo.domain.Address;
-import com.demo.nosql.mongo.domain.Location;
 import com.demo.nosql.mongo.domain.Person;
-import com.demo.nosql.mongo.web.person.*;
+import com.demo.nosql.mongo.web.person.AddressView;
+import com.demo.nosql.mongo.web.person.LocationView;
+import com.demo.nosql.mongo.web.person.PersonView;
+import com.demo.nosql.mongo.web.person.SearchPersonRequest;
+import com.demo.nosql.mongo.web.person.SearchPersonResponse;
+import com.demo.nosql.mongo.web.person.UpdatePersonRequest;
 import jakarta.annotation.Resource;
 import org.bson.types.ObjectId;
 import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
@@ -75,7 +80,7 @@ public class PersonService {
             address.state = p.address.state;
             address.zipCode = p.address.zipCode;
             if (p.address.location != null) {
-                address.location = new LocationView(p.address.location.longitude, p.address.location.latitude);
+                address.location = new LocationView(p.address.location.getX(), p.address.location.getY());
             }
             personView.address = address;
         }
@@ -94,7 +99,7 @@ public class PersonService {
             address.state = request.address.state;
             address.zipCode = request.address.zipCode;
             if (request.address.location != null) {
-                address.location = new Location(request.address.location.longitude, request.address.location.latitude);
+                address.location = new GeoJsonPoint(request.address.location.longitude, request.address.location.latitude);
             }
         }
 

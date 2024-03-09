@@ -1,14 +1,18 @@
 package com.demo.nosql.mongo.web.impl;
 
 import com.demo.nosql.mongo.domain.Address;
-import com.demo.nosql.mongo.domain.Location;
-import com.demo.nosql.mongo.web.PersonWebService;
-import com.demo.nosql.mongo.web.person.*;
-import org.bson.types.ObjectId;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import com.demo.nosql.mongo.domain.Person;
 import com.demo.nosql.mongo.service.PersonService;
+import com.demo.nosql.mongo.web.PersonWebService;
+import com.demo.nosql.mongo.web.person.CreatePersonRequest;
+import com.demo.nosql.mongo.web.person.CreatePersonResponse;
+import com.demo.nosql.mongo.web.person.SearchPersonRequest;
+import com.demo.nosql.mongo.web.person.SearchPersonResponse;
+import com.demo.nosql.mongo.web.person.UpdatePersonRequest;
+import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.stereotype.Component;
 
 /**
  * @author steve
@@ -27,9 +31,7 @@ public class PersonWebServiceImpl implements PersonWebService {
         person.email = request.email;
 
         if (request.address != null) {
-            Location location = new Location();
-            location.latitude = request.address.location.latitude;
-            location.longitude = request.address.location.longitude;
+            GeoJsonPoint location = new GeoJsonPoint(request.address.location.latitude, request.address.location.longitude);
 
             Address address = new Address();
             address.city = request.address.city;
