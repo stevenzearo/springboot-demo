@@ -17,3 +17,8 @@ spec:
           image: apache/kafka:3.7.0
           ports:
             - containerPort: 9092
+          env:
+            - name: KAFKA_ADVERTISED_HOST_NAME
+              value: "192.168.1.4"
+            - name: KAFKA_ZOOKEEPER_CONNECT
+              value: "zookeeper:2181"

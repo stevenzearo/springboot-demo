@@ -10,5 +10,5 @@ spec:
     - port: 9092
       targetPort: 9092
       protocol: TCP
-      nodePort: 30090
+      nodePort: 30092
   type: NodePort
