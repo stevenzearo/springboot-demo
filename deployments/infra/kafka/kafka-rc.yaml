@@ -22,3 +22,5 @@ spec:
               value: "PLAINTEXT://0.0.0.0:30092"
             - name: advertised.listeners
               value: "PLAINTEXT://192.168.1.4:30092"
+            - name: zookeeper.connect
+              value: "192.168.1.4:30092"
