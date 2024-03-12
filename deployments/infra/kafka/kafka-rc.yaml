@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kafka-deployment
+  namespace: spring-boot-demo
 spec:
   replicas: 1
   selector:
@@ -29,6 +30,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: zookeeper-service
+  namespace: spring-boot-demo
   labels:
     app: zookeeper
 spec:
@@ -41,6 +43,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: zookeeper-deployment
+  namespace: spring-boot-demo
 spec:
   replicas: 1
   selector:
