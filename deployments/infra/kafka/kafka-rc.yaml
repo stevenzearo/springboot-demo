@@ -19,7 +19,7 @@ spec:
             - containerPort: 9092
           env:
             - name: listeners
-              value: "PLAINTEXT://0.0.0.0:30092"
+              value: "PLAINTEXT://192.168.1.4:30092"
             - name: advertised.listeners
               value: "PLAINTEXT://192.168.1.4:30092"
             - name: zookeeper.connect
