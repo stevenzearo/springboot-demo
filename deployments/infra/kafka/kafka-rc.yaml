@@ -26,8 +26,10 @@ spec:
               value: "192.168.1.4:30092"
             - name: KAFKA_PROCESS_ROLES
               value: "broker,controller"
+            - name: KAFKA_BROKER_ID
+              value: "1"
             - name: KAFKA_CONTROLLER_QUORUM_VOTERS
-              value: "192.168.1.4:30092"
+              value: "1@192.168.1.4:30092"
             - name: KAFKA_CONTROLLER_LISTENER_NAMES
               value: "PLAINTEXT"
             - name: KAFKA_INTER_BROKER_LISTENER_NAME
