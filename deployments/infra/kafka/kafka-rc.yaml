@@ -18,9 +18,9 @@ spec:
           ports:
             - containerPort: 9092
           env:
-            - name: listeners
+            - name: LISTENERS
               value: "PLAINTEXT://192.168.1.4:30092"
-            - name: advertised.listeners
+            - name: ADVERTISED_LISTENERS
               value: "PLAINTEXT://192.168.1.4:30092"
-            - name: zookeeper.connect
+            - name: ZOOKEEPER_CONNECT
               value: "192.168.1.4:30092"
