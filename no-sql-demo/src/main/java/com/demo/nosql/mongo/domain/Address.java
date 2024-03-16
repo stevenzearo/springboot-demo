@@ -17,6 +17,7 @@ public class Address {
     @Field(name = "zip_code")
     public String zipCode;
 
+    // db.persons.ensureIndex({"address.location": "2dsphere"})
     @GeoSpatialIndexed(name = "location", type = GeoSpatialIndexType.GEO_2DSPHERE)
     public GeoJsonPoint location;
 }

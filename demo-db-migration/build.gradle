@@ -1,3 +1,6 @@
+import org.flywaydb.gradle.FlywayPlugin
+import org.flywaydb.gradle.task.AbstractFlywayTask
+
 buildscript {
     repositories {
         mavenCentral()
@@ -8,10 +11,10 @@ buildscript {
     }
 }
 
-apply plugin: org.flywaydb.gradle.FlywayPlugin
+apply plugin: FlywayPlugin
 
 
-tasks.withType(org.flywaydb.gradle.task.AbstractFlywayTask).configureEach {
+tasks.withType(AbstractFlywayTask).configureEach {
     doFirst {
         flyway {
             configurations = ['runtimeClasspath'] // use runtimeOnly scope in actual db-migration project
